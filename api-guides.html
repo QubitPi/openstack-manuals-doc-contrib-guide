@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>OpenStack API documentation &#8212; Documentation Contributor Guide  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/basic.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Documentation bugs" href="doc-bugs.html" />
+    <link rel="prev" title="Governance tag documentation guidelines" href="doc-tag.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="_static/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="_static/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="_static/css/combined.css" rel="stylesheet">
+
+<!-- Search CSS -->
+<link href="_static/css/search.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="_static/pygments.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-17511903-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+  </head><body>
+
+<!-- SOURCE_FILE: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source/api-guides.rst -->
+
+<script>
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://search.openstack.org/widget/embed.min.js?t="+Date.now();
+            tag.parentNode.insertBefore(script, tag);
+        };
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+</script>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li class="search-container-mobile">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</li>
+        <li> <!--Software -->
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/openstack-components">OpenStack Components</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/sdks">SDKs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/deployment-tools">Deployment Tools</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/assets/software/projectmap/openstack-map.pdf" target="_blank">OpenStack Map</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+          </ul>
+        </li>
+        <li> <!-- Use Cases -->
+          <a href="https://www.openstack.org/use-cases/" class="drop" id="dropdownMenuUsers">Use Cases <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/">Users in Production</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/bare-metal/">Ironic Bare Metal</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/edge-computing/">Edge Computing</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/telecoms-and-nfv/">Telecom & NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/science/">Science and HPC</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/containers/">Containers</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/enterprise/">Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li> <!-- Events -->
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">Open Infrastructure Summits</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/ptg/">Project Teams Gathering</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/opendev-2020/">OpenDev</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/community-events/">Community Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/openstackdays">OpenStack & OpenInfra Days</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+          </ul>
+        </li>
+        <li><!-- Community -->
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/tech-committee">OpenStack Technical Committee</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/coa/">Get Certified (COA)</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketing/">Marketing Resources</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">Community News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/supporting-organizations/">OpenInfra Foundation Supporting Organizations</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">Open Infrastructure Foundation (OpenInfra Foundation)</a></li>
+          </ul>
+        </li>
+        <li><!-- Marketplace -->
+          <a href="https://www.openstack.orgmarketplace/" class="drop" id="dropdownMenuLearn">Marketplace <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/distros/">Distros & Appliances</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/public-clouds/">Public Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/hosted-private-clouds/">Hosted Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/remotely-managed-private-clouds/">Remotely Managed Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/consulting/">Consulting & Integrators</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/drivers/">Drivers</a></li>
+          </ul>
+        </li>
+        <li><!-- Blog -->
+          <a href="https://www.openstack.org/blog/">Blog</a>
+        </li>
+        <li><!-- Docs -->
+          <a href="http://docs.openstack.org/">Docs</a>
+        </li>
+        <li> <!-- Join -->
+            <li class="join-nav-section">
+              <a href="https://openinfra.dev/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sponsor the Foundation</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">More about the Foundation</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+            </li>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row docs-title">
+  <div class="col-lg-8">
+      <h1>OpenStack API documentation</h1>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="doc-tag.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Governance tag documentation guidelines"></i></a>
+    
+    
+    <a href="doc-bugs.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Documentation bugs"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+    
+  </div>
+</div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-body" role="main">
+
+  <section id="openstack-api-documentation">
+<span id="api-docs"></span><h1>OpenStack API documentation<a class="headerlink" href="#openstack-api-documentation" title="Permalink to this heading">¶</a></h1>
+<section id="source-files-for-developer-openstack-org">
+<h2>Source files for developer.openstack.org<a class="headerlink" href="#source-files-for-developer-openstack-org" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference external" href="https://developer.openstack.org">developer.openstack.org</a> web site is intended for application developers
+using the OpenStack APIs to build upon. It contains links to multiple SDKs for
+specific programming languages. The API references and API Guides are
+stored on <a class="reference external" href="https://docs.openstack.org">docs.openstack.org</a>.</p>
+<p>For existing APIs, the reference information comes from RST and YAML source
+files. The RST and YAML files get stored in your project repository in an
+<code class="docutils literal notranslate"><span class="pre">api-ref</span></code> directory. The nova project has an example you can follow,
+including tox jobs for running <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">api-ref</span></code> within the <code class="docutils literal notranslate"><span class="pre">api-ref</span></code>
+directory to generate the documents.</p>
+<p>The RST conceptual and how-to files are stored in each project’s
+<code class="docutils literal notranslate"><span class="pre">doc/source/api-guide</span></code> directory. These are built to locations based on the
+service name, such as the <a class="reference external" href="https://docs.openstack.org/api-guide/compute">Compute API Guide</a>.</p>
+<p>You may embed annotations in your source code if you want to generate the
+reference information. Here is an <a class="reference external" href="https://review.opendev.org/#/c/233446/">example patch</a> from the nova project.
+Because no project has complete annotations, there are no build jobs for this
+scenario.</p>
+</section>
+<section id="standards-for-api-reference-in-openstack">
+<h2>Standards for API reference in OpenStack<a class="headerlink" href="#standards-for-api-reference-in-openstack" title="Permalink to this heading">¶</a></h2>
+<p>The API working group has <a class="reference external" href="https://specs.openstack.org/openstack/api-wg/guidelines/api-docs.html">API documentation guidelines</a> that all teams
+providing a REST API service in OpenStack strive to follow. This
+document tells you what and how much to write. If you follow the suggested
+outline, your API guide will be accurate and complete.</p>
+<p>If your project does not have any documentation, you can find a suggested
+outline in the <a class="reference external" href="https://specs.openstack.org/openstack/api-wg/guidelines/api-docs.html">API documentation guidelines</a>. The Compute project has
+examples to follow:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://opendev.org/openstack/nova/src/branch/master/api-guide">OpenStack nova api-guide</a></p></li>
+<li><p><a class="reference external" href="https://opendev.org/openstack/nova/src/branch/master/api-ref">OpenStack nova api-ref</a></p></li>
+</ul>
+<p>For service names, you must adhere to the official name for the service as
+indicated in the governance repository in the <code class="docutils literal notranslate"><span class="pre">reference/projects.yaml</span></code>
+file. These names are used in the URL for the documentation by stating the
+target directory for the content in the <code class="docutils literal notranslate"><span class="pre">api-ref-jobs:</span></code> indicator. If
+your service does not have a name indicated in the governance repo,
+please ask your PTL or a Technical Committee member how to proceed.</p>
+</section>
+<section id="versions-and-releases-for-api-reference-information">
+<h2>Versions and releases for API reference information<a class="headerlink" href="#versions-and-releases-for-api-reference-information" title="Permalink to this heading">¶</a></h2>
+<p>All API reference jobs publish from master as soon as a change lands in the
+respective project repository. This publishing practice means that you must
+write inline information when an API has a change release-to-release. Inline
+text descriptions are the only way to convey the corresponding release
+information to the documentation consumer.</p>
+<p>There are different types of versions related to OpenStack services that
+provide an API. For example, a version of a service is separate from the
+version of an API provided by that service. Also, <a class="reference external" href="https://docs.openstack.org/api-guide/compute/microversions.html">microversions</a>
+are small, documented changes to an individual API method, and are only
+applicable to some OpenStack APIs, as indicated with (microversions) on
+the <a class="reference external" href="https://docs.openstack.org/api-quick-start/">API Quick Start page</a>.</p>
+<p>Example representations of versions for the OpenStack Compute service:</p>
+<ul class="simple">
+<li><p>Header version: <cite>OpenStack-API-Version: compute 2.1</cite></p></li>
+<li><p>Service version (Release name): 15.0 (Newton)</p></li>
+<li><p>URI version:  <cite>https://servers.api.openstack.org/v2.1/</cite></p></li>
+<li><p>MIME type version: <cite>application/vnd.openstack.compute.v2.1+json</cite></p></li>
+<li><p>Microversion: <cite>2.6</cite></p></li>
+</ul>
+<p>Each project that follows the <a class="reference external" href="https://releases.openstack.org/reference/release_models.html#cycle-with-milestones">cycle-with-milestones release model</a> has stable
+branches that contain a point-in-time set of API reference content. If needed,
+refer to that source repository’s content for release comparisons for API
+reference information.</p>
+</section>
+<section id="how-to-document-your-openstack-api-service">
+<span id="how-to-document-api"></span><h2>How to document your OpenStack API service<a class="headerlink" href="#how-to-document-your-openstack-api-service" title="Permalink to this heading">¶</a></h2>
+<p>Use these instructions if you have no documentation currently, or want to
+update it to match OpenStack standards.</p>
+<p>The basic steps are:</p>
+<ol class="arabic">
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">api-ref/source</span></code> directory in your project repository.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> for the project, similar to the <a class="reference external" href="https://github.com/openstack/nova/blob/master/api-ref/source/conf.py">nova example</a>. In it,
+include the html theme, openstackdocstheme, use the os-api-ref Sphinx
+extension, and also point the bug reporting link to your project’s repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;os_api_ref&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;openstackdocstheme&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># The prefix and repo name like</span>
+<span class="n">repository_name</span> <span class="o">=</span> <span class="s1">&#39;openstack/glance&#39;</span>
+<span class="c1"># Set Launchpad bug tag, default is empty</span>
+<span class="n">bug_tag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="c1"># The launchpad project name like</span>
+<span class="n">bug_project</span> <span class="o">=</span> <span class="s1">&#39;glance&#39;</span>
+
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;openstackdocs&#39;</span>
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;sidebar_mode&quot;</span><span class="p">:</span> <span class="s2">&quot;toc&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">test-requirements.txt</span></code> file for the project with a line for
+the <code class="docutils literal notranslate"><span class="pre">os-api-ref</span></code> Sphinx extension:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">ref</span><span class="o">&gt;=</span><span class="mf">1.0.0</span> <span class="c1"># Apache-2.0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create RST files for each operation.</p></li>
+<li><p>In the RST file, use <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">rest_method::</span></code> for each operation.</p>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">rest_method::</span> <span class="pre">GET</span> <span class="pre">/v2.1/{tenant_id}/flavors</span></code></p>
+</li>
+<li><p>In the RST file, add requests and responses that point to a
+<code class="docutils literal notranslate"><span class="pre">parameters.yaml</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">rest_parameters</span><span class="p">::</span> <span class="n">parameters</span><span class="o">.</span><span class="n">yaml</span>
+
+   <span class="o">-</span> <span class="n">tenant_id</span><span class="p">:</span> <span class="n">tenant_id</span>
+</pre></div>
+</div>
+<p>Here is an example entry in <code class="docutils literal notranslate"><span class="pre">parameters.yaml</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">admin_tenant_id</span><span class="p">:</span>
+  <span class="n">description</span><span class="p">:</span> <span class="o">|</span>
+    <span class="n">The</span> <span class="n">UUID</span> <span class="n">of</span> <span class="n">the</span> <span class="n">administrative</span> <span class="n">project</span><span class="o">.</span>
+  <span class="ow">in</span><span class="p">:</span> <span class="n">path</span>
+  <span class="n">required</span><span class="p">:</span> <span class="n">true</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">string</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create sample JSON requests and responses and store in a directory, and
+point to those in your RST files. As an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">literalinclude</span><span class="p">::</span> <span class="n">samples</span><span class="o">/</span><span class="n">os</span><span class="o">-</span><span class="n">evacuate</span><span class="o">/</span><span class="n">server</span><span class="o">-</span><span class="n">evacuate</span><span class="o">-</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span>
+   <span class="p">:</span><span class="n">language</span><span class="p">:</span> <span class="n">javascript</span>
+</pre></div>
+</div>
+</li>
+<li><p>Update the project’s <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> file to include a configuration for
+building the API reference locally with these lines:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[testenv:api-ref]</span>
+<span class="gp"># </span>This environment is called from CI scripts to <span class="nb">test</span> and publish
+<span class="gp"># </span>the API Ref to docs.openstack.org.
+<span class="go">whitelist_externals = rm</span>
+<span class="go">commands =</span>
+<span class="go">  rm -rf api-ref/build</span>
+<span class="go">  sphinx-build -W -b html -d api-ref/build/doctrees api-ref/source api-ref/build/html</span>
+</pre></div>
+</div>
+</li>
+<li><p>Test the <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> changes by running this tox command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tox -e api-ref
+</pre></div>
+</div>
+</li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">api-ref-jobs</span></code> template to your project, patch the
+<a class="reference external" href="https://opendev.org/openstack/project-config/src/branch/master/zuul.d/projects.yaml">zuul.d/projects.yaml</a>
+file stored in <code class="docutils literal notranslate"><span class="pre">openstack/project-config</span></code> repository.</p></li>
+</ol>
+<p>After the source files and build jobs exist, the docs are built to
+<a class="reference external" href="https://docs.openstack.org">docs.openstack.org</a>.</p>
+<p>If your document is completely new, you need to add links to it from the API
+landing page and the OpenStack Governance reference document,
+<code class="docutils literal notranslate"><span class="pre">projects.yaml</span></code>.</p>
+<p>To add a link to the project’s API docs to the API landing page, patch the
+<code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file stored in the <a class="reference external" href="https://opendev.org/openstack/api-site/src/branch/master/api-quick-start/source/index.rst">openstack/api-site repository</a>.</p>
+<p>To ensure the openstack/governance repository has the correct link to your API
+documentation, patch the <code class="docutils literal notranslate"><span class="pre">reference/projects.yaml</span></code> file in the
+<a class="reference external" href="https://opendev.org/openstack/governance/src/branch/master/reference/projects.yaml">openstack/governance repository</a>.</p>
+</section>
+</section>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="doc-tag.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Governance tag documentation guidelines"></i></a>
+          
+          
+            <a href="doc-bugs.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Documentation bugs"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">this page last updated: 2022-12-26 10:06:20</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="https://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the
+                 document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="OpenStack Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/id/">Bahasa Indonesia (Indonesian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/it/">Italiano (Italian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/tr_TR/">Türkçe (Türkiye)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="index.html" class="docs-sidebar-section-title"><h4>Documentation Contributor Guide </h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="team-structure.html">Documentation team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="team-vision.html">2017/2018 documentation team vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="non-native-english-speakers.html">Non-native English speakers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blueprints-and-specs.html">Blueprints and specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-guides.html">Project guide setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-index.html">Landing pages on docs.openstack.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-tag.html">Governance tag documentation guidelines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenStack API documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#source-files-for-developer-openstack-org">Source files for developer.openstack.org</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#standards-for-api-reference-in-openstack">Standards for API reference in OpenStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#versions-and-releases-for-api-reference-information">Versions and releases for API reference information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-document-your-openstack-api-service">How to document your OpenStack API service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc-bugs.html">Documentation bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-docs.html">Writing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-style.html">Writing style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guidelines.html">OpenStack user experience and user interface guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst-conv.html">RST conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-conv.html">JSON conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagram-guidelines.html">Diagram guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs-review.html">Reviewing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs-builds.html">Building documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redirects.html">Redirecting documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-tools.html">Using documentation tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Publishing a documentation release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/glossary.html">Glossary</a></li>
+</ul>
+
+    </div>
+
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="local-table-of-contents">
+      <h4 class="docs-sidebar-section-title">Page Contents</h4>
+      <ul>
+<li><a class="reference internal" href="#">OpenStack API documentation</a><ul>
+<li><a class="reference internal" href="#source-files-for-developer-openstack-org">Source files for developer.openstack.org</a></li>
+<li><a class="reference internal" href="#standards-for-api-reference-in-openstack">Standards for API reference in OpenStack</a></li>
+<li><a class="reference internal" href="#versions-and-releases-for-api-reference-information">Versions and releases for API reference information</a></li>
+<li><a class="reference internal" href="#how-to-document-your-openstack-api-service">How to document your OpenStack API service</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="https://openstack.org/projects/">Projects</a></li>
+          <li><a href="https://www.openstack.org/software/security/">OpenStack Security</a></li>
+          <li><a href="https://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="https://openstack.org/blog/">Blog</a></li>g
+          <li><a href="https://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="https://openstack.org/community/">User Groups</a></li>
+          <li><a href="https://openstack.org/community/events/">Events</a></li>
+          <li><a href="https://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="https://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="https://docs.openstack.org/contributors">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="https://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="https://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="https://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="https://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="https://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="https://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="https://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="_static/js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="_static/js/bootstrap.min.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="_static/js/docs.js"></script>
+
+<!-- standard sphinx include libraries, which allow search highlighting -->
+<script type="text/javascript" src="_static/underscore.js"></script>
+<script type="text/javascript" src="_static/doctools.js"></script>
+<script type="text/javascript" src="_static/searchtools.js"></script>
+<script type="text/javascript" src="_static/language_data.js"></script>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      LINK_SUFFIX: '.html',
+      SOURCELINK_SUFFIX: '.txt',
+      HAS_SOURCE:  true
+    };
+</script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+  /* Build a description of this page including SHA, source location on git
+   * repo, build time and the project's launchpad bug tag. Set the HREF of the
+   * bug buttons
+   */
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+    /* "giturl" is the URL of the source file on Git and is auto-generated by
+     * openstackdocstheme.
+     *
+     * "pagename" is a standard sphinx parameter containing the name of
+     * the source file, without extension.
+     */
+
+    var sourceFile = "api-guides" + ".rst";
+    gitURL = "Source: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: bf388c77ad0e3655b1c07b7f3d325a61dee86c6f";
+    var repositoryName = "openstack/openstack-manuals";
+    var bugProject = "openstack-manuals";
+    var bugTitle = "OpenStack API documentation in Documentation Contributor Guide";
+    var fieldTags = "doc-contrib-guide";
+    var useStoryboard = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release:  on 2022-12-26 10:06:20";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, useStoryboard);
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Non-native English speakers &#8212; Documentation Contributor Guide  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/basic.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Blueprints and specifications" href="blueprints-and-specs.html" />
+    <link rel="prev" title="2017/2018 documentation team vision" href="team-vision.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="_static/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="_static/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="_static/css/combined.css" rel="stylesheet">
+
+<!-- Search CSS -->
+<link href="_static/css/search.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="_static/pygments.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-17511903-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+  </head><body>
+
+<!-- SOURCE_FILE: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source/non-native-english-speakers.rst -->
+
+<script>
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://search.openstack.org/widget/embed.min.js?t="+Date.now();
+            tag.parentNode.insertBefore(script, tag);
+        };
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+</script>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li class="search-container-mobile">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</li>
+        <li> <!--Software -->
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/openstack-components">OpenStack Components</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/sdks">SDKs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/deployment-tools">Deployment Tools</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/assets/software/projectmap/openstack-map.pdf" target="_blank">OpenStack Map</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+          </ul>
+        </li>
+        <li> <!-- Use Cases -->
+          <a href="https://www.openstack.org/use-cases/" class="drop" id="dropdownMenuUsers">Use Cases <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/">Users in Production</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/bare-metal/">Ironic Bare Metal</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/edge-computing/">Edge Computing</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/telecoms-and-nfv/">Telecom & NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/science/">Science and HPC</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/containers/">Containers</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/enterprise/">Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li> <!-- Events -->
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">Open Infrastructure Summits</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/ptg/">Project Teams Gathering</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/opendev-2020/">OpenDev</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/community-events/">Community Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/openstackdays">OpenStack & OpenInfra Days</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+          </ul>
+        </li>
+        <li><!-- Community -->
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/tech-committee">OpenStack Technical Committee</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/coa/">Get Certified (COA)</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketing/">Marketing Resources</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">Community News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/supporting-organizations/">OpenInfra Foundation Supporting Organizations</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">Open Infrastructure Foundation (OpenInfra Foundation)</a></li>
+          </ul>
+        </li>
+        <li><!-- Marketplace -->
+          <a href="https://www.openstack.orgmarketplace/" class="drop" id="dropdownMenuLearn">Marketplace <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/distros/">Distros & Appliances</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/public-clouds/">Public Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/hosted-private-clouds/">Hosted Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/remotely-managed-private-clouds/">Remotely Managed Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/consulting/">Consulting & Integrators</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/drivers/">Drivers</a></li>
+          </ul>
+        </li>
+        <li><!-- Blog -->
+          <a href="https://www.openstack.org/blog/">Blog</a>
+        </li>
+        <li><!-- Docs -->
+          <a href="http://docs.openstack.org/">Docs</a>
+        </li>
+        <li> <!-- Join -->
+            <li class="join-nav-section">
+              <a href="https://openinfra.dev/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sponsor the Foundation</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">More about the Foundation</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+            </li>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row docs-title">
+  <div class="col-lg-8">
+      <h1>Non-native English speakers</h1>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="team-vision.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: 2017/2018 documentation team vision"></i></a>
+    
+    
+    <a href="blueprints-and-specs.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Blueprints and specifications"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+    
+  </div>
+</div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-body" role="main">
+
+  <section id="non-native-english-speakers">
+<h1>Non-native English speakers<a class="headerlink" href="#non-native-english-speakers" title="Permalink to this heading">¶</a></h1>
+<p>OpenStack projects communicate in English, and our documentation is written
+in US English. However, many documentation contributors have English as a
+second (or third, or fourth) language. This poses many challenges for non-
+native English speakers, but there are some things that native English
+speakers can do to make it easier to include non-native speakers in our
+community. This chapter contains some suggestions for both native and
+non-native English speakers to help make our community more inclusive and
+welcoming for all people.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This chapter was written based on the wonderful talk given by Masayuki
+Igawa, Dong Ma, and Samuel De Medeiros Queiroz at linux.conf.au in 2017.
+Thank you for their permission to use this content, and for their
+feedback and support during development. You can watch their original
+talk on YouTube: <a class="reference external" href="https://www.youtube.com/watch?v=fsn6buk-BtE">Non-native English speakers in Open Source communities:
+A True Story</a> or
+read their article on opensource.com: <a class="reference external" href="https://opensource.com/article/17/1/non-native-speakers-take-open-source-communities">Tips for non-native English speakers
+working on open source projects</a>.</p>
+</div>
+<section id="new-contributors-with-english-as-a-second-language">
+<h2>New contributors with English as a second language<a class="headerlink" href="#new-contributors-with-english-as-a-second-language" title="Permalink to this heading">¶</a></h2>
+<p>Challenges related to language skills are easier to overcome than cultural
+ones. Cultural differences need to be respected, while English skills can
+always be improved.</p>
+<p>In order to brush up on your English skills, be in contact with the language
+as much as you can. Do not think about your limitations. Just do your best
+and you will improve eventually.</p>
+<p>Read as much as you can, because this will help you gather vocabulary.
+Communicating through chat and mailing lists daily helps, too. Some tools,
+such as real-time dictionaries and translators, are very useful with these
+platforms.</p>
+<p>Talking to others or yourself helps you become comfortable speaking out more
+frequently. Having one-on-one conversations to express your ideas is easier
+than discussing in larger groups.</p>
+<p>Speak and write your opinion, and ask your questions; this participation is
+always a good opportunity to exercise your English. Do not be afraid.</p>
+<p>For meetings, make sure you prepare yourself in advance so you will be
+comfortable with the subject and more confident about the opinions you are
+expressing.</p>
+<p>Make friends who are English speakers and talk more to practice your
+English skills.</p>
+<p>Writing and reading blogs and technical articles in English are also great
+ideas.</p>
+<section id="reading">
+<h3>Reading<a class="headerlink" href="#reading" title="Permalink to this heading">¶</a></h3>
+<p>This is the easiest but also the most important skill. It is the
+easiest because if you can not understand what is written you have the
+opportunity to read it again, or as many times as needed. If you encounter an
+uncommon phrase, expression, or abbreviation, you can use a dictionary or
+translator. On the other hand, it is the most important skill because for
+most open source projects the main means of communication are mailing lists
+and IRC.</p>
+</section>
+<section id="writing">
+<h3>Writing<a class="headerlink" href="#writing" title="Permalink to this heading">¶</a></h3>
+<p>English grammar is an issue especially for languages that structure
+sentences differently. This may pose a problem for communication in writing
+emails and communicating via IRC channels. For some, writing long and
+beautiful sentences is difficult, and the reliance on simpler sentences is
+prevalent because these are easy to write and convey understanding.</p>
+</section>
+<section id="listening">
+<h3>Listening<a class="headerlink" href="#listening" title="Permalink to this heading">¶</a></h3>
+<p>Listening is more problematic than reading and writing for non-native
+speakers. Normally, conversation between native English speakers is very
+fast, which makes following the discussions for those still learning
+difficult and limits their participation in those discussions. Furthermore,
+trying to understand the variety of accents in a globally spread community
+adds to the complexity. Interestingly, American pronunciation is often easier
+to understand than others.</p>
+</section>
+<section id="speaking">
+<h3>Speaking<a class="headerlink" href="#speaking" title="Permalink to this heading">¶</a></h3>
+<p>Speaking is more difficult than listening because the participant’s
+vocabulary may be a bit limited. Furthermore, English phonemes and grammar
+are often very different from a non-native speaker’s mother language, making
+an interaction even more difficult to understand.</p>
+</section>
+</section>
+<section id="working-with-non-native-english-speakers">
+<h2>Working with non-native English speakers<a class="headerlink" href="#working-with-non-native-english-speakers" title="Permalink to this heading">¶</a></h2>
+<p>For a native English speaker, it can sometimes be difficult to determine
+when a non-English speaker is having trouble communicating with you because
+of a language barrier, or because there are cultural challenges that are
+making it difficult. This can occur even between different English-speaking
+cultures. Cultural differences must be respected, while English skills can
+always be improved.</p>
+<p>Here are some general guidelines for making your communications as clear
+as possible to a diverse audience:</p>
+<ul class="simple">
+<li><p>Speak slowly and use simple words and sentences.</p></li>
+<li><p>Do not ever make fun of non-native English speakers if you find something
+wrong about the English they use.</p></li>
+<li><p>Try to encourage newcomers to express their opinions and make them
+comfortable enough to do so.</p></li>
+<li><p>Remember that asynchronous written communications (such as email) are easier
+for non-native English speakers, as they have time to
+translate and understand. If you need to discuss a complicated topic, then
+this will often be the best option.</p></li>
+<li><p>IRC meetings can often move too fast for non-native English speakers, and
+face-to-face communication (or video calls) are even worse. Always circulate
+meeting agenda or talking points ahead of time, give participants plenty of
+time to think about topics and raise questions before moving on to the
+next topic, and circulate detailed notes or minutes afterwards.</p></li>
+</ul>
+<section id="some-specific-cultural-things-to-remember">
+<h3>Some specific cultural things to remember<a class="headerlink" href="#some-specific-cultural-things-to-remember" title="Permalink to this heading">¶</a></h3>
+<p>Each culture has different norms when interacting with other people. This
+section describes some specific cultural differences that you might encounter,
+along with some practical advice for native English speakers to try and
+overcome these particular barriers.</p>
+<p>Americans and Australians especially are often very direct, even terse, in
+the way they communicate, which can come across to other cultures quite
+rudely. Chinese and Brazilian Portuguese speakers like to list the facts
+first and give the request or action at the end, so you may need to read
+through emails very carefully to find out what you are being asked for. This
+structure is also good to remember when you are writing to people who
+communicate in this way, as it will be easier for them to understand your
+request if it is in a format they are familiar with. Try to remember to start
+emails with a greeting, a compliment, a positive comment on the work being
+discussed, or an observation about a common topic (for example: “It’s been
+wonderful to see so many reviews from you recently.”, or “I really enjoyed
+reading your latest post to the mailing list.”), before getting into the main
+topic of discussion, especially if your main topic is negative. Additionally,
+remember to explain the background to your request and include any links
+or other information that might help form the context of your message.</p>
+<p>In Japanese culture, people tend not to say yes or no clearly as a way to
+respect others and to avoid appearing argumentative. A common phrase in
+Japanese business language is “Zensho shimasu” (善処します), which literally
+means “I’ll do my best”, however the actual meaning is “I will do nothing”,
+or “no way”. This type of linguistic confusion has caused many problems
+between Japanese and English speakers, most famously between Prime Minister
+Eisaku Sato and President Richard Nixon in the 1960s. If, as an English
+speaker, you notice a Japanese speaker being a bit evasive in committing, or
+seeming to commit to too many things, check in with them in a private email.
+It will be much easier for them (from a cultural perspective, anyway) to say
+yes or no privately, than on a mailing list or IRC.</p>
+<p>In Chinese culture, people prefer to just say yes, instead of saying no or
+trying to negotiate. This is largely due to the complex Confucian culture,
+one of the books of which is ‘Doctrine of the Mean’, which teaches leniency.
+In practice, however, this means Chinese speakers will often take on much
+more than they actually want to. If, as an English speaker, you notice
+a Chinese speaker taking on a lot of projects, try to politely give them
+a way to refuse. You might try to say something like “You have a lot of
+things to do right now, are you sure you want to do this too?”. That will
+give them an opportunity to give you a plainer answer, rather than simply
+agreeing out of politeness.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do you have an interesting point to make about your culture? Patches are
+welcome to this section! Explain the difference, and give some advice for
+English speakers on how to overcome it.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="team-vision.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: 2017/2018 documentation team vision"></i></a>
+          
+          
+            <a href="blueprints-and-specs.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Blueprints and specifications"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">this page last updated: 2022-12-26 10:06:20</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="https://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the
+                 document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="OpenStack Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/id/">Bahasa Indonesia (Indonesian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/it/">Italiano (Italian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/tr_TR/">Türkçe (Türkiye)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="index.html" class="docs-sidebar-section-title"><h4>Documentation Contributor Guide </h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="team-structure.html">Documentation team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="team-vision.html">2017/2018 documentation team vision</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Non-native English speakers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#new-contributors-with-english-as-a-second-language">New contributors with English as a second language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-non-native-english-speakers">Working with non-native English speakers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="blueprints-and-specs.html">Blueprints and specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-guides.html">Project guide setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-index.html">Landing pages on docs.openstack.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-tag.html">Governance tag documentation guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-guides.html">OpenStack API documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-bugs.html">Documentation bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-docs.html">Writing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-style.html">Writing style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guidelines.html">OpenStack user experience and user interface guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst-conv.html">RST conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-conv.html">JSON conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagram-guidelines.html">Diagram guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs-review.html">Reviewing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs-builds.html">Building documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redirects.html">Redirecting documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-tools.html">Using documentation tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Publishing a documentation release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/glossary.html">Glossary</a></li>
+</ul>
+
+    </div>
+
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="local-table-of-contents">
+      <h4 class="docs-sidebar-section-title">Page Contents</h4>
+      <ul>
+<li><a class="reference internal" href="#">Non-native English speakers</a><ul>
+<li><a class="reference internal" href="#new-contributors-with-english-as-a-second-language">New contributors with English as a second language</a><ul>
+<li><a class="reference internal" href="#reading">Reading</a></li>
+<li><a class="reference internal" href="#writing">Writing</a></li>
+<li><a class="reference internal" href="#listening">Listening</a></li>
+<li><a class="reference internal" href="#speaking">Speaking</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-with-non-native-english-speakers">Working with non-native English speakers</a><ul>
+<li><a class="reference internal" href="#some-specific-cultural-things-to-remember">Some specific cultural things to remember</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="https://openstack.org/projects/">Projects</a></li>
+          <li><a href="https://www.openstack.org/software/security/">OpenStack Security</a></li>
+          <li><a href="https://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="https://openstack.org/blog/">Blog</a></li>g
+          <li><a href="https://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="https://openstack.org/community/">User Groups</a></li>
+          <li><a href="https://openstack.org/community/events/">Events</a></li>
+          <li><a href="https://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="https://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="https://docs.openstack.org/contributors">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="https://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="https://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="https://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="https://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="https://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="https://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="https://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="_static/js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="_static/js/bootstrap.min.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="_static/js/docs.js"></script>
+
+<!-- standard sphinx include libraries, which allow search highlighting -->
+<script type="text/javascript" src="_static/underscore.js"></script>
+<script type="text/javascript" src="_static/doctools.js"></script>
+<script type="text/javascript" src="_static/searchtools.js"></script>
+<script type="text/javascript" src="_static/language_data.js"></script>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      LINK_SUFFIX: '.html',
+      SOURCELINK_SUFFIX: '.txt',
+      HAS_SOURCE:  true
+    };
+</script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+  /* Build a description of this page including SHA, source location on git
+   * repo, build time and the project's launchpad bug tag. Set the HREF of the
+   * bug buttons
+   */
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+    /* "giturl" is the URL of the source file on Git and is auto-generated by
+     * openstackdocstheme.
+     *
+     * "pagename" is a standard sphinx parameter containing the name of
+     * the source file, without extension.
+     */
+
+    var sourceFile = "non-native-english-speakers" + ".rst";
+    gitURL = "Source: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: bf388c77ad0e3655b1c07b7f3d325a61dee86c6f";
+    var repositoryName = "openstack/openstack-manuals";
+    var bugProject = "openstack-manuals";
+    var bugTitle = "Non-native English speakers in Documentation Contributor Guide";
+    var fieldTags = "doc-contrib-guide";
+    var useStoryboard = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release:  on 2022-12-26 10:06:20";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, useStoryboard);
+</script>
+
+
+  </body>
+</html>

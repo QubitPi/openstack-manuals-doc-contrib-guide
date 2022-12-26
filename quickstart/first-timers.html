@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>First timers &#8212; Documentation Contributor Guide  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/basic.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developers" href="developers.html" />
+    <link rel="prev" title="Quickstart" href="../quickstart.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+<!-- Search CSS -->
+<link href="../_static/css/search.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/pygments.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-17511903-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+  </head><body>
+
+<!-- SOURCE_FILE: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source/quickstart/first-timers.rst -->
+
+<script>
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://search.openstack.org/widget/embed.min.js?t="+Date.now();
+            tag.parentNode.insertBefore(script, tag);
+        };
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+</script>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li class="search-container-mobile">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</li>
+        <li> <!--Software -->
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/openstack-components">OpenStack Components</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/sdks">SDKs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/deployment-tools">Deployment Tools</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/assets/software/projectmap/openstack-map.pdf" target="_blank">OpenStack Map</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+          </ul>
+        </li>
+        <li> <!-- Use Cases -->
+          <a href="https://www.openstack.org/use-cases/" class="drop" id="dropdownMenuUsers">Use Cases <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/">Users in Production</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/bare-metal/">Ironic Bare Metal</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/edge-computing/">Edge Computing</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/telecoms-and-nfv/">Telecom & NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/science/">Science and HPC</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/containers/">Containers</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/enterprise/">Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li> <!-- Events -->
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">Open Infrastructure Summits</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/ptg/">Project Teams Gathering</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/opendev-2020/">OpenDev</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/community-events/">Community Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/openstackdays">OpenStack & OpenInfra Days</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+          </ul>
+        </li>
+        <li><!-- Community -->
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/tech-committee">OpenStack Technical Committee</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/coa/">Get Certified (COA)</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketing/">Marketing Resources</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">Community News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/supporting-organizations/">OpenInfra Foundation Supporting Organizations</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">Open Infrastructure Foundation (OpenInfra Foundation)</a></li>
+          </ul>
+        </li>
+        <li><!-- Marketplace -->
+          <a href="https://www.openstack.orgmarketplace/" class="drop" id="dropdownMenuLearn">Marketplace <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/distros/">Distros & Appliances</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/public-clouds/">Public Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/hosted-private-clouds/">Hosted Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/remotely-managed-private-clouds/">Remotely Managed Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/consulting/">Consulting & Integrators</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/drivers/">Drivers</a></li>
+          </ul>
+        </li>
+        <li><!-- Blog -->
+          <a href="https://www.openstack.org/blog/">Blog</a>
+        </li>
+        <li><!-- Docs -->
+          <a href="http://docs.openstack.org/">Docs</a>
+        </li>
+        <li> <!-- Join -->
+            <li class="join-nav-section">
+              <a href="https://openinfra.dev/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sponsor the Foundation</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">More about the Foundation</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+            </li>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row docs-title">
+  <div class="col-lg-8">
+      <h1>First timers</h1>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="../quickstart.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Quickstart"></i></a>
+    
+    
+    <a href="developers.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Developers"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+    
+  </div>
+</div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-body" role="main">
+
+  <section id="first-timers">
+<span id="id1"></span><h1>First timers<a class="headerlink" href="#first-timers" title="Permalink to this heading">¶</a></h1>
+<p>One of the best ways to start contributing to OpenStack documentation
+is to walk through the Installation Guide and complete it by hand.
+Keep notes as you go, and offer suggestions for improvement by filing
+documentation bugs at Launchpad.</p>
+<section id="setting-up-for-contribution">
+<span id="id2"></span><h2>Setting up for contribution<a class="headerlink" href="#setting-up-for-contribution" title="Permalink to this heading">¶</a></h2>
+<p>To get started, first <a class="reference external" href="https://docs.openstack.org/contributors/common/accounts.html">set up your OpenStack account</a> and
+then <a class="reference external" href="https://docs.openstack.org/contributors/common/setup-gerrit.html">set up Gerrit</a>.</p>
+<p>To set up your environment for contributions, proceed with the
+subsections below.</p>
+<section id="set-up-a-text-editor">
+<h3>Set up a text editor<a class="headerlink" href="#set-up-a-text-editor" title="Permalink to this heading">¶</a></h3>
+<p>Use any text editor of your choice to work with the documentation. It is a
+good idea to choose an editor that supports spell checking and syntax
+highlighting for RST. For example:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://wiki.gnome.org/Apps/Gedit">Gedit GNOME Wiki</a></p></li>
+<li><p><a class="reference external" href="https://atom.io/">Atom</a></p></li>
+<li><p><a class="reference external" href="http://www.vim.org/">Vim</a></p></li>
+<li><p><a class="reference external" href="https://wiki.typo3.org/Editors_%28reST%29#Open_source_.28.3D_free_of_cost.29">Editors(reST)</a></p></li>
+</ul>
+<p>To keep the documents clean and easy to compare, all of the OpenStack
+projects require that text is wrapped at <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/#maximum-line-length">79 characters maximum</a>,
+with no white spaces at the end of the line.</p>
+<p>You can configure the text editor to do that automatically.</p>
+<p>For example, in the <code class="file docutils literal notranslate"><span class="pre">.vimrc</span></code>:</p>
+<div class="highlight-vim notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nb">list</span>
+<span class="k">set</span> <span class="nb">listchars</span><span class="p">=</span><span class="k">tab</span>:<span class="p">&gt;-,</span>trail:<span class="p">-,</span>extends:#<span class="p">,</span>nbsp:<span class="p">-</span>
+<span class="k">set</span> <span class="nb">modeline</span>
+<span class="k">set</span> <span class="nb">tw</span><span class="p">=</span><span class="m">78</span>
+<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">8</span> <span class="nb">expandtab</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">4</span> <span class="nb">softtabstop</span><span class="p">=</span><span class="m">4</span>
+</pre></div>
+</div>
+</section>
+<section id="set-up-git-and-git-review">
+<span id="git-setup"></span><h3>Set up git and git-review<a class="headerlink" href="#set-up-git-and-git-review" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">git</span></code>. See <a class="reference external" href="https://help.github.com/articles/set-up-git">GitHub help</a> for details.</p>
+<p>If you use Windows to contribute to OpenStack, install
+<a class="reference external" href="http://gitforwindows.org/">Git for Windows</a>.
+In the subsequent procedures, run commands from the Git Bash console.</p>
+</li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">git-review</span></code> so that you are able to submit patches.
+See <a class="reference external" href="https://docs.opendev.org/opendev/infra-manual/latest/developers.html#install-the-git-review-utility">Installing git-review</a> for details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use Windows to contribute to OpenStack, install
+<a class="reference external" href="https://docs.python.org/3/using/windows.html">Python</a>
+as prerequisites. As part of the Python installation,
+be sure to install setuptools and pip as instructed.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="set-up-ssh">
+<h3>Set up SSH<a class="headerlink" href="#set-up-ssh" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>On the computer which you commit from, generate an SSH key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh-keygen –t rsa
+</pre></div>
+</div>
+</li>
+<li><p>Optionally, enter a password. If you enter one, remember it because
+you must enter it every time you commit.</p></li>
+<li><p>View and copy your SSH key:</p>
+<p><strong>Linux/Mac</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>less ~/.ssh/id_rsa.pub
+</pre></div>
+</div>
+<p><strong>Windows</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>notepad ~/.ssh/id_rsa.pub
+</pre></div>
+</div>
+</li>
+<li><p>Sign into gerrit at <a class="reference external" href="https://review.opendev.org/">https://review.opendev.org/</a>.</p></li>
+<li><p>In the upper right, click your username. Click the <a class="reference external" href="https://review.opendev.org/#/settings/ssh-keys">Settings &gt; SSH Public
+Keys</a> page. Click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Key</span></code>. Paste the key in the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">SSH</span> <span class="pre">Public</span> <span class="pre">Key</span></code>
+web form and click <code class="docutils literal notranslate"><span class="pre">Add</span></code>.</p></li>
+</ol>
+</section>
+<section id="set-up-a-repository">
+<h3>Set up a repository<a class="headerlink" href="#set-up-a-repository" title="Permalink to this heading">¶</a></h3>
+<p>For the instructions on how to set up a repository so that you can work
+on it locally, refer to the <a class="reference external" href="https://docs.opendev.org/opendev/infra-manual/latest/developers.html#starting-work-on-a-new-project">Starting Work on a New Project</a>
+of the Infrastructure manual.</p>
+<p>See <a class="reference internal" href="#troubleshoot-setup"><span class="std std-ref">Troubleshooting your setup</span></a> if you have difficulty with a repository
+setup.</p>
+</section>
+</section>
+<section id="finding-a-bug">
+<h2>Finding a bug<a class="headerlink" href="#finding-a-bug" title="Permalink to this heading">¶</a></h2>
+<p>After setting up your environment for contribution, it is time to find
+something to work on:</p>
+<ol class="arabic">
+<li><p>Go to the bug lists at <a class="reference external" href="https://bugs.launchpad.net/openstack-manuals/+bugs">Bugs:openstack-manuals</a>
+for documentation bugs related to the openstack-manuals repository.</p>
+<p>For project-specific documentation bugs, go to
+<a class="reference external" href="https://bugs.launchpad.net">https://bugs.launchpad.net</a>/&lt;projectname&gt;.</p>
+</li>
+<li><p>Find a bug that has been confirmed by another contributor and assign it
+to yourself.</p></li>
+</ol>
+<p>For more information on documentation bugs, see <a class="reference internal" href="../doc-bugs.html"><span class="doc">Documentation bugs</span></a>.</p>
+</section>
+<section id="committing-a-change">
+<h2>Committing a change<a class="headerlink" href="#committing-a-change" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Update the repository and create a new topic branch as described in
+the <a class="reference external" href="https://docs.opendev.org/opendev/infra-manual/latest/developers.html#starting-a-change">Starting a Change</a> section of the Infrastructure manual.</p></li>
+<li><p>Fix the bug in the docs.</p>
+<p>Read <a class="reference internal" href="../writing-style.html"><span class="doc">Writing style</span></a>, also pay attention to <a class="reference internal" href="../rst-conv.html"><span class="doc">RST conventions</span></a>.</p>
+</li>
+<li><p>Create your commit message. See <a class="reference external" href="https://docs.opendev.org/opendev/infra-manual/latest/developers.html#committing-a-change">Committing a change</a> for details.</p></li>
+<li><p>Create a patch for review.opendev.org following the <a class="reference external" href="https://docs.opendev.org/opendev/infra-manual/latest/developers.html#submitting-a-change-for-review">Submitting a Change
+for Review</a> instructions.</p></li>
+<li><p>Follow the URL returned from <code class="docutils literal notranslate"><span class="pre">git-review</span></code> to check your commit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">review</span><span class="o">.</span><span class="n">opendev</span><span class="o">.</span><span class="n">org</span><span class="o">/&lt;</span><span class="n">COMMIT</span><span class="o">-</span><span class="n">NUMBER</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>In Gerrit, wait for the automatic Zuul checks to succeed.</p></li>
+</ol>
+<p>Celebrate and wait for reviews!</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#troubleshoot-setup"><span class="std std-ref">Troubleshooting your setup</span></a></p></li>
+<li><p><a class="reference internal" href="../docs-builds.html"><span class="doc">Building documentation</span></a></p></li>
+</ul>
+</div>
+</section>
+<section id="responding-to-requests">
+<h2>Responding to requests<a class="headerlink" href="#responding-to-requests" title="Permalink to this heading">¶</a></h2>
+<p>After you submit a patch, reviewers may ask you to make changes before
+they approve the patch.</p>
+<p>To submit changes to your patch, proceed with the following steps:</p>
+<ol class="arabic">
+<li><p>Copy the commit number from the review.opendev.org URL.</p></li>
+<li><p>At the command line, change into your local copy of the repository.</p></li>
+<li><p>Check out the patch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git review -d &lt;COMMIT-NUMBER&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Make your edits.</p></li>
+<li><p>Commit the changes using the <cite>amend</cite> flag:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git commit -a --amend
+</pre></div>
+</div>
+<p>Ensure that the Change-ID line remains intact in your commit message. This
+prevents Gerrit from creating a new patch.</p>
+</li>
+<li><p>Push the changes to review as described in the <a class="reference external" href="https://docs.opendev.org/opendev/infra-manual/latest/developers.html#updating-a-change">Updating a Change</a> section
+of the Infrastructure manual.</p></li>
+</ol>
+<p>Wait for more reviews.</p>
+</section>
+<section id="troubleshooting-your-setup">
+<span id="troubleshoot-setup"></span><h2>Troubleshooting your setup<a class="headerlink" href="#troubleshooting-your-setup" title="Permalink to this heading">¶</a></h2>
+<section id="git-and-git-review">
+<h3>git and git review<a class="headerlink" href="#git-and-git-review" title="Permalink to this heading">¶</a></h3>
+<ul>
+<li><p>Authenticity error</p>
+<p>The first time that you run <strong class="command">git review</strong>, you might see this error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s1">&#39;[review.opendev.org]:29418 ([104.130.246.32]:29418) can&#39;</span><span class="n">t</span> <span class="n">be</span> <span class="n">established</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Type <em>yes</em> (all three letters) at the prompt.</p>
+</li>
+<li><p>Gerrit connection error</p>
+<p>When you connect to gerrit for the first time, you might see this error:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Could not connect to gerrit.</span>
+<span class="go">Enter your gerrit username:</span>
+</pre></div>
+</div>
+<p>Enter the user name that matches the user name in the <span class="guilabel">Settings</span>
+page at review.opendev.org.</p>
+</li>
+<li><p>Not a git repository error</p>
+<p>If you see this error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fatal</span><span class="p">:</span> <span class="n">Not</span> <span class="n">a</span> <span class="n">git</span> <span class="n">repository</span> <span class="p">(</span><span class="ow">or</span> <span class="nb">any</span> <span class="n">of</span> <span class="n">the</span> <span class="n">parent</span> <span class="n">directories</span><span class="p">):</span> <span class="o">.</span><span class="n">git</span>
+<span class="n">You</span> <span class="n">are</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">directory</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">git</span> <span class="n">repository</span><span class="p">:</span> <span class="n">A</span> <span class="o">.</span><span class="n">git</span> <span class="n">file</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Change into your local copy of the repository and re-run the command.</p>
+</li>
+<li><p>Gerrit location unknown error</p>
+<p>If you see this error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">We</span> <span class="n">don</span><span class="s1">&#39;t know where your gerrit is. Please manually create a remote named &quot;gerrit&quot; and try again.</span>
+</pre></div>
+</div>
+<p>You need to make a git remote that maps to the review.opendev.org SSH port
+for your repository. For example, for a user with the <code class="docutils literal notranslate"><span class="pre">username_example</span></code>
+user name and the openstack-manuals repository, you should run this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">gerrit</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">username_example</span><span class="nd">@review</span><span class="o">.</span><span class="n">opendev</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">29418</span><span class="o">/</span><span class="n">openstack</span><span class="o">/</span><span class="n">openstack</span><span class="o">-</span><span class="n">manuals</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</li>
+<li><p>Remote rejected error</p>
+<p>If you see this error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! [remote rejected] HEAD -&gt; refs/publish/master/addopenstackdocstheme (missing Change-Id in commit message footer)
+</pre></div>
+</div>
+<p>The first time you set up a gerrit remote and try to create a patch for
+review.opendev.org, you may see this message because the tool needs one
+more edit of your commit message in order to automatically insert
+the <em>Change-Id</em>. When this happens, run <strong class="command">git commit -a --amend</strong>,
+save the commit message and run <strong class="command">git review -v</strong> again.</p>
+</li>
+<li><p>Permission denied error</p>
+<p>If you see this error:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Permission denied (publickey).</span>
+</pre></div>
+</div>
+<p>Double check the <span class="guilabel">Settings</span> page at
+<a class="reference external" href="https://review.opendev.org/">https://review.opendev.org/</a>
+to make sure your public key on the computer
+or virtual server has been copied to SSH public keys on
+<a class="reference external" href="https://review.opendev.org/#/settings/ssh-keys">SSH Public Keys</a>.
+If you have not adjusted
+your <code class="docutils literal notranslate"><span class="pre">.ssh</span></code> configuration, your system may not be connecting using
+the correct key for gerrit.</p>
+<p>List your local public key on Mac or Linux with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">less ~/.ssh/id_rsa.pub</span>
+</pre></div>
+</div>
+<p>On Windows, look for it in the same location.</p>
+</li>
+<li><p>Merge conflict, rebase required</p>
+<p>Sometimes your change creates a merge conflict with another patch.
+In this case, you need to rebase your commit on top of the current
+state of the repository. In many cases, this can be achieved by pressing
+the <code class="docutils literal notranslate"><span class="pre">Rebase</span></code> button in the gerrit interface. If this fails, you must
+<a class="reference external" href="https://docs.opendev.org/opendev/infra-manual/latest/developers.html#understanding-changes-and-patch-sets">rebase manually</a>.</p>
+<p>For a basic introduction to solving merge conflicts, see the GitHub article
+<a class="reference external" href="https://help.github.com/articles/resolving-merge-conflicts-after-a-git-rebase/">Resolving merge conflicts after a git rebase</a>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> in the <code class="docutils literal notranslate"><span class="pre">Zuul</span> <span class="pre">check</span></code> section of your commit in Gerrit</p>
+<ol class="arabic simple">
+<li><p>Click the link next to the <code class="docutils literal notranslate"><span class="pre">FAILURE</span></code> test.</p></li>
+<li><p>Verify the output of the <code class="file docutils literal notranslate"><span class="pre">console.html</span></code>:</p>
+<ul class="simple">
+<li><p>If it contains errors or warnings related to your commit with
+a problematic file name and line in question, fix the issues and
+push the new changes on review.</p></li>
+<li><p>If the issue is not related to your commit, re-run the gate jobs by
+leaving the word <em>recheck</em> in the comments section of your
+Gerrit review.</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.opendev.org/opendev/infra-manual/latest/developers.html#automated-testing">Automated Testing</a></p></li>
+<li><p><a class="reference internal" href="../docs-builds.html#build-jobs"><span class="std std-ref">Build jobs</span></a></p></li>
+</ul>
+</div>
+</li>
+</ul>
+</section>
+<section id="network">
+<h3>Network<a class="headerlink" href="#network" title="Permalink to this heading">¶</a></h3>
+<p>If your network connection is weak, you might see this error:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Read from socket failed: Connection reset by peer</span>
+</pre></div>
+</div>
+<p>Try again when your network connection improves.</p>
+<p><strong>Accessing gerrit over HTTP/HTTPS</strong></p>
+<p>If you suspect that SSH over non-standards ports might be blocked or need to
+access the web using http/https, you can configure git-review to
+<a class="reference external" href="https://docs.opendev.org/opendev/infra-manual/latest/developers.html#accessing-gerrit-over-https">use an https endpoint instead of ssh</a>
+as explained in the Infrastructure Manual.</p>
+</section>
+<section id="id3">
+<h3>Python<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<p>If you see this error:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/usr/bin/env: python: No such file or directory</span>
+</pre></div>
+</div>
+<p>Your Python environment is not set up correctly. See the Python documentation
+for your operating system.</p>
+</section>
+<section id="i18n">
+<h3>i18n<a class="headerlink" href="#i18n" title="Permalink to this heading">¶</a></h3>
+<p>If you see this error:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git review -s
+<span class="go">Problems encountered installing commit-msg hook</span>
+<span class="go">The following command failed with exit code 1</span>
+<span class="go">   &quot;scp  :hooks/commit-msg .git/hooks/commit-msg&quot;</span>
+<span class="go">-----------------------</span>
+<span class="go">.git/hooks/commit-msg: No such file or directory</span>
+<span class="go">-----------------------</span>
+</pre></div>
+</div>
+<p>You may have a LANGUAGE variable setup to something else than C. Try using
+instead:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">LANG</span><span class="o">=</span>C <span class="nv">LANGUAGE</span><span class="o">=</span>C git review -s
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="../quickstart.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Quickstart"></i></a>
+          
+          
+            <a href="developers.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Developers"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">this page last updated: 2022-12-26 10:06:20</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="https://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the
+                 document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="OpenStack Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/id/">Bahasa Indonesia (Indonesian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/it/">Italiano (Italian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/tr_TR/">Türkçe (Türkiye)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Documentation Contributor Guide </h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../quickstart.html">Quickstart</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">First timers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers.html">Developers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../team-structure.html">Documentation team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../team-vision.html">2017/2018 documentation team vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../non-native-english-speakers.html">Non-native English speakers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../blueprints-and-specs.html">Blueprints and specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project-guides.html">Project guide setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-index.html">Landing pages on docs.openstack.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-tag.html">Governance tag documentation guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-guides.html">OpenStack API documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-bugs.html">Documentation bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing-docs.html">Writing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing-style.html">Writing style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guidelines.html">OpenStack user experience and user interface guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst-conv.html">RST conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../json-conv.html">JSON conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagram-guidelines.html">Diagram guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs-review.html">Reviewing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs-builds.html">Building documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../redirects.html">Redirecting documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-tools.html">Using documentation tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Publishing a documentation release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/glossary.html">Glossary</a></li>
+</ul>
+
+    </div>
+
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="local-table-of-contents">
+      <h4 class="docs-sidebar-section-title">Page Contents</h4>
+      <ul>
+<li><a class="reference internal" href="#">First timers</a><ul>
+<li><a class="reference internal" href="#setting-up-for-contribution">Setting up for contribution</a><ul>
+<li><a class="reference internal" href="#set-up-a-text-editor">Set up a text editor</a></li>
+<li><a class="reference internal" href="#set-up-git-and-git-review">Set up git and git-review</a></li>
+<li><a class="reference internal" href="#set-up-ssh">Set up SSH</a></li>
+<li><a class="reference internal" href="#set-up-a-repository">Set up a repository</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#finding-a-bug">Finding a bug</a></li>
+<li><a class="reference internal" href="#committing-a-change">Committing a change</a></li>
+<li><a class="reference internal" href="#responding-to-requests">Responding to requests</a></li>
+<li><a class="reference internal" href="#troubleshooting-your-setup">Troubleshooting your setup</a><ul>
+<li><a class="reference internal" href="#git-and-git-review">git and git review</a></li>
+<li><a class="reference internal" href="#network">Network</a></li>
+<li><a class="reference internal" href="#id3">Python</a></li>
+<li><a class="reference internal" href="#i18n">i18n</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="https://openstack.org/projects/">Projects</a></li>
+          <li><a href="https://www.openstack.org/software/security/">OpenStack Security</a></li>
+          <li><a href="https://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="https://openstack.org/blog/">Blog</a></li>g
+          <li><a href="https://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="https://openstack.org/community/">User Groups</a></li>
+          <li><a href="https://openstack.org/community/events/">Events</a></li>
+          <li><a href="https://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="https://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="https://docs.openstack.org/contributors">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="https://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="https://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="https://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="https://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="https://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="https://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="https://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.min.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- standard sphinx include libraries, which allow search highlighting -->
+<script type="text/javascript" src="../_static/underscore.js"></script>
+<script type="text/javascript" src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/searchtools.js"></script>
+<script type="text/javascript" src="../_static/language_data.js"></script>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      LINK_SUFFIX: '.html',
+      SOURCELINK_SUFFIX: '.txt',
+      HAS_SOURCE:  true
+    };
+</script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+  /* Build a description of this page including SHA, source location on git
+   * repo, build time and the project's launchpad bug tag. Set the HREF of the
+   * bug buttons
+   */
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+    /* "giturl" is the URL of the source file on Git and is auto-generated by
+     * openstackdocstheme.
+     *
+     * "pagename" is a standard sphinx parameter containing the name of
+     * the source file, without extension.
+     */
+
+    var sourceFile = "quickstart/first-timers" + ".rst";
+    gitURL = "Source: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: bf388c77ad0e3655b1c07b7f3d325a61dee86c6f";
+    var repositoryName = "openstack/openstack-manuals";
+    var bugProject = "openstack-manuals";
+    var bugTitle = "First timers in Documentation Contributor Guide";
+    var fieldTags = "doc-contrib-guide";
+    var useStoryboard = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release:  on 2022-12-26 10:06:20";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, useStoryboard);
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Release task detail &#8212; Documentation Contributor Guide  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/basic.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Releasing tools" href="release-tools.html" />
+    <link rel="prev" title="Release tasks overview" href="taskoverview.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+<!-- Search CSS -->
+<link href="../_static/css/search.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/pygments.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-17511903-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+  </head><body>
+
+<!-- SOURCE_FILE: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source/release/taskdetail.rst -->
+
+<script>
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://search.openstack.org/widget/embed.min.js?t="+Date.now();
+            tag.parentNode.insertBefore(script, tag);
+        };
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+</script>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li class="search-container-mobile">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</li>
+        <li> <!--Software -->
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/openstack-components">OpenStack Components</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/sdks">SDKs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/deployment-tools">Deployment Tools</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/assets/software/projectmap/openstack-map.pdf" target="_blank">OpenStack Map</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+          </ul>
+        </li>
+        <li> <!-- Use Cases -->
+          <a href="https://www.openstack.org/use-cases/" class="drop" id="dropdownMenuUsers">Use Cases <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/">Users in Production</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/bare-metal/">Ironic Bare Metal</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/edge-computing/">Edge Computing</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/telecoms-and-nfv/">Telecom & NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/science/">Science and HPC</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/containers/">Containers</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/enterprise/">Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li> <!-- Events -->
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">Open Infrastructure Summits</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/ptg/">Project Teams Gathering</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/opendev-2020/">OpenDev</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/community-events/">Community Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/openstackdays">OpenStack & OpenInfra Days</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+          </ul>
+        </li>
+        <li><!-- Community -->
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/tech-committee">OpenStack Technical Committee</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/coa/">Get Certified (COA)</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketing/">Marketing Resources</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">Community News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/supporting-organizations/">OpenInfra Foundation Supporting Organizations</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">Open Infrastructure Foundation (OpenInfra Foundation)</a></li>
+          </ul>
+        </li>
+        <li><!-- Marketplace -->
+          <a href="https://www.openstack.orgmarketplace/" class="drop" id="dropdownMenuLearn">Marketplace <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/distros/">Distros & Appliances</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/public-clouds/">Public Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/hosted-private-clouds/">Hosted Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/remotely-managed-private-clouds/">Remotely Managed Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/consulting/">Consulting & Integrators</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/drivers/">Drivers</a></li>
+          </ul>
+        </li>
+        <li><!-- Blog -->
+          <a href="https://www.openstack.org/blog/">Blog</a>
+        </li>
+        <li><!-- Docs -->
+          <a href="http://docs.openstack.org/">Docs</a>
+        </li>
+        <li> <!-- Join -->
+            <li class="join-nav-section">
+              <a href="https://openinfra.dev/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sponsor the Foundation</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">More about the Foundation</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+            </li>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row docs-title">
+  <div class="col-lg-8">
+      <h1>Release task detail</h1>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="taskoverview.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Release tasks overview"></i></a>
+    
+    
+    <a href="release-tools.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Releasing tools"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+    
+  </div>
+</div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-body" role="main">
+
+  <section id="release-task-detail">
+<span id="id1"></span><h1>Release task detail<a class="headerlink" href="#release-task-detail" title="Permalink to this heading">¶</a></h1>
+<p>This section provides detailed instructions for each release task.</p>
+<section id="installation-guides-testing">
+<h2>Installation Guides testing<a class="headerlink" href="#installation-guides-testing" title="Permalink to this heading">¶</a></h2>
+<p>Testing Installation Guides for a release series is handled by each project
+team’s members or individual documentation contributors.</p>
+<p>When testing installation documentation for a project, it is important to test
+it together with other related projects by using their project-specific
+installation docs. This is best achieved by following the instructions from
+the common
+<a class="reference external" href="https://docs.openstack.org/install-guide/">OpenStack Installation Guide</a>.</p>
+<p>Remember that all project installation documentation must be based on the
+common OpenStack Installation Guide and must link back to that Guide.</p>
+<p>A list of all project installation guides for the release series under
+development is available from <a class="reference external" href="https://docs.openstack.org/latest/install/">https://docs.openstack.org/latest/install/</a>.</p>
+<p>For convenience, an <a class="reference external" href="https://review.opendev.org/#/dashboard/?foreach=file%3A%22%5Edoc%5C%2Fsource%5C%2Finstall%5C%2F.%2A%22%0Astatus%3Aopen%0ANOT+owner%3Aself%0ANOT+label%3AWorkflow%3C%3D%2D1%0Alabel%3AVerified%3E%3D1%2Czuul%0ANOT+reviewedby%3Aself&amp;title=Installation+Guides+Review+Inbox&amp;Needs+final+%2B2=label%3ACode%2DReview%3E%3D2+limit%3A50+NOT+label%3ACode%2DReview%3C%3D%2D1%2Cself&amp;Passed+Zuul%2C+No+Negative+Feedback+%28Small+Fixes%29=NOT+label%3ACode%2DReview%3E%3D2+NOT+label%3ACode%2DReview%3C%3D%2D1+delta%3A%3C%3D10&amp;Passed+Zuul%2C+No+Negative+Feedback=NOT+label%3ACode%2DReview%3E%3D2+NOT+label%3ACode%2DReview%3C%3D%2D1+delta%3A%3E10&amp;Needs+Feedback+%28Changes+older+than+5+days+that+have+not+been+reviewed+by+anyone%29=NOT+label%3ACode%2DReview%3C%3D%2D1+NOT+label%3ACode%2DReview%3E%3D1+age%3A5d&amp;You+are+a+reviewer%2C+but+haven%27t+voted+in+the+current+revision=NOT+label%3ACode%2DReview%3C%3D%2D1%2Cself+NOT+label%3ACode%2DReview%3E%3D1%2Cself+reviewer%3Aself&amp;Wayward+Changes+%28Changes+with+no+code+review+in+the+last+2+days%29=NOT+is%3Areviewed+age%3A2d">Installation Guides Review Inbox</a> is provided. The Inbox
+offers an overview of currently open changes that touch files under
+<code class="docutils literal notranslate"><span class="pre">doc/source/install/</span></code> in project team repositories.</p>
+<p>As soon as pre-release packages are available, you can start testing. Testers
+should look at the current latest version of the document, and attempt to run
+each command on the pre-release package. If a command cannot be run, and it is
+confirmed to be a bug in the documentation, file a bug against the appropriate
+project in Launchpad.</p>
+</section>
+<section id="release-notes">
+<h2>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this heading">¶</a></h2>
+<p>OpenStack Manuals no longer handles release notes for the project teams.
+However, we do need to write release notes for our documentation. Release
+notes should be added as major changes occur throughout the release, however
+this is often overlooked – both by authors and reviewers – and thus a final
+review is needed to check that all major changes are in.</p>
+<p>Contact each subteam lead, listed at <a class="reference internal" href="../team-structure.html"><span class="doc">Documentation team structure</span></a>, and ask them
+for the notes for the documentation they look after.</p>
+<p>The source for release notes is
+<code class="docutils literal notranslate"><span class="pre">openstack-manuals/releasenotes/source/RELEASENAME.rst</span></code> and they are
+published to
+<code class="docutils literal notranslate"><span class="pre">https://docs.openstack.org/releasenotes/openstack-manuals/RELEASENAME.html</span></code>.</p>
+</section>
+<section id="update-www-pages-for-end-of-release">
+<span id="release-www-page-updates"></span><h2>Update www pages for end of release<a class="headerlink" href="#update-www-pages-for-end-of-release" title="Permalink to this heading">¶</a></h2>
+<p>Make the following changes in the <strong>openstack-manuals</strong> repository:</p>
+<ol class="arabic">
+<li><p>Copy the “latest” project data file to one <em>named for the release
+being completed</em>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cp www/project-data/latest.yaml www/project-data/RELEASE.yaml
+</pre></div>
+</div>
+</li>
+<li><p>Create the docs.openstack.org pages for the <em>new</em> release, by
+copying the existing templates to the new directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cp -a www/RELEASE www/NEXT_SERIES
+</pre></div>
+</div>
+</li>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">SERIES_INFO</span></code> data structure at the top of the source
+file for the template generator (<code class="docutils literal notranslate"><span class="pre">tools/www-generator.py</span></code>). See
+<a class="reference internal" href="../doc-tools/template-generator.html#template-generator"><span class="std std-ref">Template generator details</span></a> for details about the structure.</p>
+<ul class="simple">
+<li><p>Change the series with status <code class="docutils literal notranslate"><span class="pre">'development'</span></code> to have status
+<code class="docutils literal notranslate"><span class="pre">'maintained'</span></code>.</p></li>
+<li><p>Add a new entry for the new series, giving the estimated release
+date and setting the status to <code class="docutils literal notranslate"><span class="pre">'development'</span></code>.</p></li>
+</ul>
+<p>For example, at the end of the Pike cycle, the variables will
+contain:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SERIES_INFO</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;austin&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;October 2010&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;obsolete&#39;</span><span class="p">),</span>
+    <span class="c1"># ...</span>
+    <span class="s1">&#39;mitaka&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;April 2016&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;EOL&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;newton&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;October 2016&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;maintained&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;ocata&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;February 2017&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;maintained&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;pike&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;August 2017&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;development&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To update the settings:</p>
+<ul class="simple">
+<li><p>the status for pike is changed to <code class="docutils literal notranslate"><span class="pre">'maintained'</span></code></p></li>
+<li><p>a new entry for queens is added</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SERIES_INFO</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;austin&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;October 2010&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;obsolete&#39;</span><span class="p">),</span>
+    <span class="c1"># ...</span>
+    <span class="s1">&#39;mitaka&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;April 2016&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;EOL&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;newton&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;October 2016&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;maintained&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;ocata&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;February 2017&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;maintained&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;pike&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;August 2017&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;maintained&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;queens&#39;</span><span class="p">:</span> <span class="n">SeriesInfo</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="s1">&#39;August 2017&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;development&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will cause docs.openstack.org to redirect to the
+series-specific landing page for the current release, and the
+templates for the release being completed will use the data from
+the file created in the previous step.</p>
+</li>
+<li><p>Test the build locally with <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">publishdocs</span></code>.</p>
+<p>If any project links are missing and cause the template generator
+to fail, set the flags to disable linking to those docs. For
+example, if “foo” does not have a configuration reference guide,
+set <code class="docutils literal notranslate"><span class="pre">has_config_ref:</span> <span class="pre">false</span></code> for the “foo” project by modifying
+the file created in step 1.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If any link flags are set to false or any projects are commented
+out, someone will need to periodically check for those documents
+to be published when the new branches are created in the
+affected projects. All branches should be created before the
+final release deadline, so it should be possible to update the
+project-data settings by then to have the site link to all of
+the latest documentation.</p>
+</div>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When the patch to make these changes merges, docs.openstack.org
+will immediately update to redirect to the release. The previous
+release pages will still be present at their old locations.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changes to the docs site can take an hour or more to populate,
+depending on the status of the gate and the number of changes being
+pushed at release time, so be prepared to have the release day
+patches ready well ahead of the official release time. You can
+check the current gate status at <a class="reference external" href="http://zuul.openstack.org/">Zuul status</a> to get an idea of the current
+merge times.</p>
+</div>
+</section>
+<section id="generate-the-site-map">
+<h2>Generate the site map<a class="headerlink" href="#generate-the-site-map" title="Permalink to this heading">¶</a></h2>
+<p>After the release day patches have merged, generate a new site map for
+docs.openstack.org using the <code class="docutils literal notranslate"><span class="pre">sitemap</span></code> script in the <strong>openstack-doc-tools</strong>
+repository. Copy the <cite>sitemap.xml</cite> file into the <cite>www/static</cite> directory in
+the <strong>openstack-manuals</strong> repository and commit the change.</p>
+</section>
+<section id="end-of-life">
+<h2>End-of-life<a class="headerlink" href="#end-of-life" title="Permalink to this heading">¶</a></h2>
+<p>Once a release is at end-of-life, you must stop producing new publications.
+To indicate the end-of-life, add the below sentence at the index
+for release-specific documentation:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">warning</span><span class="p">::</span>
+
+   This guide documents the OpenStack Liberty release and is frozen
+   as OpenStack Liberty has reached its official end-of-life.
+   This guide will not get any updates from the OpenStack project anymore.
+   See the `OpenStack Documentation page
+   &lt;https://docs.openstack.org/&gt;`_ for current documentation.
+</pre></div>
+</div>
+<p>For continuously released documentation, exclude the release from target.</p>
+<p>For example, from:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>This guide documents OpenStack Newton, Mitaka, and Liberty releases.
+</pre></div>
+</div>
+<p>To:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>This guide documents OpenStack Newton and Mitaka releases.
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See <a class="reference internal" href="../docs-builds.html#docs-builds-eol"><span class="std std-ref">Building docs from end-of-life releases</span></a> for instructions for building
+documentation for versions past their end-of-life.</p>
+</div>
+</section>
+</section>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="taskoverview.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Release tasks overview"></i></a>
+          
+          
+            <a href="release-tools.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Releasing tools"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">this page last updated: 2022-12-26 10:06:20</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="https://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the
+                 document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="OpenStack Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/id/">Bahasa Indonesia (Indonesian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/it/">Italiano (Italian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/tr_TR/">Türkçe (Türkiye)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Documentation Contributor Guide </h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../team-structure.html">Documentation team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../team-vision.html">2017/2018 documentation team vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../non-native-english-speakers.html">Non-native English speakers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../blueprints-and-specs.html">Blueprints and specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project-guides.html">Project guide setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-index.html">Landing pages on docs.openstack.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-tag.html">Governance tag documentation guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-guides.html">OpenStack API documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-bugs.html">Documentation bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing-docs.html">Writing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing-style.html">Writing style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guidelines.html">OpenStack user experience and user interface guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst-conv.html">RST conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../json-conv.html">JSON conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagram-guidelines.html">Diagram guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs-review.html">Reviewing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs-builds.html">Building documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../redirects.html">Redirecting documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-tools.html">Using documentation tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../release.html">Publishing a documentation release</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="taskoverview.html">Release tasks overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Release task detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-tools.html">Releasing tools</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/glossary.html">Glossary</a></li>
+</ul>
+
+    </div>
+
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="local-table-of-contents">
+      <h4 class="docs-sidebar-section-title">Page Contents</h4>
+      <ul>
+<li><a class="reference internal" href="#">Release task detail</a><ul>
+<li><a class="reference internal" href="#installation-guides-testing">Installation Guides testing</a></li>
+<li><a class="reference internal" href="#release-notes">Release Notes</a></li>
+<li><a class="reference internal" href="#update-www-pages-for-end-of-release">Update www pages for end of release</a></li>
+<li><a class="reference internal" href="#generate-the-site-map">Generate the site map</a></li>
+<li><a class="reference internal" href="#end-of-life">End-of-life</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="https://openstack.org/projects/">Projects</a></li>
+          <li><a href="https://www.openstack.org/software/security/">OpenStack Security</a></li>
+          <li><a href="https://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="https://openstack.org/blog/">Blog</a></li>g
+          <li><a href="https://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="https://openstack.org/community/">User Groups</a></li>
+          <li><a href="https://openstack.org/community/events/">Events</a></li>
+          <li><a href="https://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="https://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="https://docs.openstack.org/contributors">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="https://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="https://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="https://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="https://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="https://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="https://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="https://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.min.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- standard sphinx include libraries, which allow search highlighting -->
+<script type="text/javascript" src="../_static/underscore.js"></script>
+<script type="text/javascript" src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/searchtools.js"></script>
+<script type="text/javascript" src="../_static/language_data.js"></script>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      LINK_SUFFIX: '.html',
+      SOURCELINK_SUFFIX: '.txt',
+      HAS_SOURCE:  true
+    };
+</script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+  /* Build a description of this page including SHA, source location on git
+   * repo, build time and the project's launchpad bug tag. Set the HREF of the
+   * bug buttons
+   */
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+    /* "giturl" is the URL of the source file on Git and is auto-generated by
+     * openstackdocstheme.
+     *
+     * "pagename" is a standard sphinx parameter containing the name of
+     * the source file, without extension.
+     */
+
+    var sourceFile = "release/taskdetail" + ".rst";
+    gitURL = "Source: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: bf388c77ad0e3655b1c07b7f3d325a61dee86c6f";
+    var repositoryName = "openstack/openstack-manuals";
+    var bugProject = "openstack-manuals";
+    var bugTitle = "Release task detail in Documentation Contributor Guide";
+    var fieldTags = "doc-contrib-guide";
+    var useStoryboard = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release:  on 2022-12-26 10:06:20";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, useStoryboard);
+</script>
+
+
+  </body>
+</html>

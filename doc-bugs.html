@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Documentation bugs &#8212; Documentation Contributor Guide  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/basic.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DocImpact" href="doc-impact.html" />
+    <link rel="prev" title="OpenStack API documentation" href="api-guides.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="_static/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="_static/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="_static/css/combined.css" rel="stylesheet">
+
+<!-- Search CSS -->
+<link href="_static/css/search.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="_static/pygments.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-17511903-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+  </head><body>
+
+<!-- SOURCE_FILE: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source/doc-bugs.rst -->
+
+<script>
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://search.openstack.org/widget/embed.min.js?t="+Date.now();
+            tag.parentNode.insertBefore(script, tag);
+        };
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+</script>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li class="search-container-mobile">
+    <div class="openstack-search-bar" data-baseUrl="search.openstack.org" data-context="docs-openstack"></div>
+</li>
+        <li> <!--Software -->
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/openstack-components">OpenStack Components</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/sdks">SDKs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/deployment-tools">Deployment Tools</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/assets/software/projectmap/openstack-map.pdf" target="_blank">OpenStack Map</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+          </ul>
+        </li>
+        <li> <!-- Use Cases -->
+          <a href="https://www.openstack.org/use-cases/" class="drop" id="dropdownMenuUsers">Use Cases <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/">Users in Production</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/bare-metal/">Ironic Bare Metal</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/edge-computing/">Edge Computing</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/telecoms-and-nfv/">Telecom & NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/science/">Science and HPC</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/containers/">Containers</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/use-cases/enterprise/">Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li> <!-- Events -->
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">Open Infrastructure Summits</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/ptg/">Project Teams Gathering</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/opendev-2020/">OpenDev</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/community-events/">Community Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/events/openstackdays">OpenStack & OpenInfra Days</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+          </ul>
+        </li>
+        <li><!-- Community -->
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/tech-committee">OpenStack Technical Committee</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/coa/">Get Certified (COA)</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketing/">Marketing Resources</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">Community News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/supporting-organizations/">OpenInfra Foundation Supporting Organizations</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">Open Infrastructure Foundation (OpenInfra Foundation)</a></li>
+          </ul>
+        </li>
+        <li><!-- Marketplace -->
+          <a href="https://www.openstack.orgmarketplace/" class="drop" id="dropdownMenuLearn">Marketplace <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/distros/">Distros & Appliances</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/public-clouds/">Public Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/hosted-private-clouds/">Hosted Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/remotely-managed-private-clouds/">Remotely Managed Private Clouds</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/consulting/">Consulting & Integrators</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/drivers/">Drivers</a></li>
+          </ul>
+        </li>
+        <li><!-- Blog -->
+          <a href="https://www.openstack.org/blog/">Blog</a>
+        </li>
+        <li><!-- Docs -->
+          <a href="http://docs.openstack.org/">Docs</a>
+        </li>
+        <li> <!-- Join -->
+            <li class="join-nav-section">
+              <a href="https://openinfra.dev/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+              <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sponsor the Foundation</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">More about the Foundation</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+            </li>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row docs-title">
+  <div class="col-lg-8">
+      <h1>Documentation bugs</h1>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="api-guides.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: OpenStack API documentation"></i></a>
+    
+    
+    <a href="doc-impact.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: DocImpact"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+    
+  </div>
+</div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-body" role="main">
+
+  <section id="documentation-bugs">
+<span id="doc-bugs"></span><h1>Documentation bugs<a class="headerlink" href="#documentation-bugs" title="Permalink to this heading">¶</a></h1>
+<p>The Documentation team tracks some of its work through bugs. This section
+includes the detailed overview of documentation bugs specifics.</p>
+<p>The Documentation team uses the following projects for tracking documentation
+bugs for repositories managed by the Documentation project or the project’s
+subteams:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://bugs.launchpad.net/openstack-manuals">openstack-manuals</a> is the
+default area for doc bugs in the openstack-manuals repository.</p></li>
+<li><p><a class="reference external" href="https://bugs.launchpad.net/openstack-api-site">openstack-api-site</a> is used
+for the api-site API repository.</p></li>
+<li><p><a class="reference external" href="https://bugs.launchpad.net/openstack-contributor-guide">openstack-contributor-guide</a>
+is used for the contributor-guide repository.</p></li>
+<li><p><a class="reference external" href="https://bugs.launchpad.net/ossp-security-documentation">OpenStack Security Guide Documentation</a> is used for the
+security-doc repository.</p></li>
+<li><p><a class="reference external" href="https://bugs.launchpad.net/openstack-doc-tools">openstack-doc-tools</a> is
+used for the openstack-doc-tools and openstackdocstheme repositories.</p></li>
+</ul>
+<p>Documentation bugs for project-specific repositories are tracked in the
+appropriate project’s bug tracking area on Launchpad.</p>
+<p>OpenStack projects may also use
+<a class="reference external" href="https://storyboard.openstack.org/">StoryBoard</a> to track cross-project
+tasks involving documentation. For more information, see <a class="reference internal" href="#doc-stories"><span class="std std-ref">Working on documentation stories</span></a>.</p>
+<p>Finally, OpenStack developers can use a DocImpact flag to help identify bugs
+that require documentation updates in the openstack-manuals repository.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc-impact.html">DocImpact</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc-impact.html#using-the-docimpact-flag-in-a-commit-message">Using the DocImpact flag in a commit message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc-impact.html#writing-good-commit-messages-for-docimpact">Writing good commit messages for DocImpact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc-impact.html#third-party-docimpact-settings">Third-Party DocImpact settings</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="filing-a-bug">
+<h2>Filing a bug<a class="headerlink" href="#filing-a-bug" title="Permalink to this heading">¶</a></h2>
+<p>Bugs differ depending on:</p>
+<ul class="simple">
+<li><p>The way they are filed:</p>
+<ul>
+<li><p>Manually</p></li>
+<li><p>Automatically (through the DocImpact flag)</p></li>
+</ul>
+</li>
+<li><p>The required changes:</p>
+<ul>
+<li><p>Fix spelling errors or formatting</p></li>
+<li><p>Update existing content</p></li>
+<li><p>Add new content</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Do not file a bug with troubleshooting issues. If you are experiencing
+problems with your environment, and you are following the installation
+tutorials, seek assistance from the relevant team and operations
+specialists on IRC,
+<a class="reference external" href="https://stackoverflow.com/questions/">Stack Overflow</a>
+or the OpenStack mailing list.</p>
+<p>For more information about the relevant IRC channels, see the
+<a class="reference external" href="https://wiki.openstack.org/wiki/IRC">OpenStack IRC wiki</a>.</p>
+<p>For more information about the OpenStack mailing list, see the
+<a class="reference external" href="https://wiki.openstack.org/wiki/Mailing_Lists">Mailing lists wiki</a>.</p>
+<p>A bug should be filed only if the documentation itself is found to be
+incorrect.</p>
+</div>
+</section>
+<section id="working-on-documentation-bugs">
+<h2>Working on documentation bugs<a class="headerlink" href="#working-on-documentation-bugs" title="Permalink to this heading">¶</a></h2>
+<p>Do not work on a documentation bug until it is set to
+‘Confirmed’. Ideally, someone other than the reporter will confirm the bug
+for you. Once the changes are made in a patch, they are reviewed and approved,
+just like other OpenStack code.</p>
+<p>To pick up a documentation bug or mark a bug as related to the
+documentation, go to <a class="reference external" href="https://bugs.launchpad.net/openstack/+bugs?field.tag=documentation">the aggregated list of documentation bugs from all
+OpenStack projects</a>.</p>
+</section>
+<section id="working-on-documentation-stories">
+<span id="doc-stories"></span><h2>Working on documentation stories<a class="headerlink" href="#working-on-documentation-stories" title="Permalink to this heading">¶</a></h2>
+<p>OpenStack projects may use <a class="reference external" href="https://storyboard.openstack.org/">StoryBoard</a>
+to track cross-project tasks. When these tasks involve documentation, the
+tasks should be tagged as such in StoryBoard, allowing you to view
+<a class="reference external" href="https://storyboard.openstack.org/#!/story/list?status=active&amp;q=documentation%20docs">the aggregated list of documentation stories from all OpenStack projects</a>.</p>
+</section>
+<section id="triaging-bugs-for-openstack-manuals">
+<h2>Triaging bugs for openstack-manuals<a class="headerlink" href="#triaging-bugs-for-openstack-manuals" title="Permalink to this heading">¶</a></h2>
+<p>The following sections detail the role of the bug triage liaison and the
+process and guidelines of bug triaging for the openstack-manuals repository.</p>
+<p>Project-specific repositories follow their respective team’s processes and
+guidelines for bug triaging.</p>
+<section id="bug-triage-liaison">
+<h3>Bug triage liaison<a class="headerlink" href="#bug-triage-liaison" title="Permalink to this heading">¶</a></h3>
+<p>The documentation team assigns bug triage liaisons to ensure all bugs reported
+against the openstack-manuals repository are triaged in a timely manner.</p>
+<p>If you are interested in serving as a bug triage liaison, there are several
+steps you will need to follow in order to be prepared.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Read this page in full. Keep this document in mind at all times as it
+describes the duties of the liaison and how to triage bugs. In particular,
+it describes how to set bug importance, and how to select bug tags.</p>
+</div>
+<ol class="arabic">
+<li><p>Before you begin to work on documentation bugs, you must join the
+openstack-doc-bugs team on Launchpad. For more information,
+see <a class="reference internal" href="quickstart/first-timers.html#first-timers"><span class="std std-ref">First timers</span></a>.</p></li>
+<li><p>Sign up for openstack-manuals emails from Launchpad if you have not already:</p>
+<ol class="arabic simple">
+<li><p>Navigate to the <a class="reference external" href="https://bugs.launchpad.net/openstack-manuals">Launchpad openstack-manuals bug list</a>.</p></li>
+<li><p>Click on the right hand side, <span class="guilabel">Subscribe to bug mail</span>.</p></li>
+<li><p>In the pop-up that is displayed, keep the recipient as
+<span class="guilabel">Yourself</span>, and name your subscription something useful
+like <span class="guilabel">Docs Bugs</span>. You can choose
+either option or how much mail you get, but keep in mind that getting
+mail for all changes - while informative - will result in several dozen
+emails per day at least.</p></li>
+</ol>
+</li>
+<li><p>Volunteer during the course of the Documentation team meeting, when
+volunteers to be bug deputy are requested.</p>
+<p>Alternatively, use the #openstack-doc IRC channel or the
+<a class="reference external" href="mailto:openstack-discuss&#37;&#52;&#48;lists&#46;openstack&#46;org">openstack-discuss<span>&#64;</span>lists<span>&#46;</span>openstack<span>&#46;</span>org</a> mailing list to contact the
+documentation core team members.</p>
+</li>
+<li><p>Sign up as a volunteer by adding your name to the bug triaging schedule on the
+<a class="reference external" href="https://wiki.openstack.org/wiki/Documentation/SpecialityTeams#Bug_Triage_Team">Bug Triage Team</a>
+page.</p></li>
+<li><p>During your scheduled time as a liaison, if it is feasible for your
+timezone, plan on attending the Documentation team meeting. That way if you
+have any CRITICAL or HIGH bugs, you can address them with the team.</p></li>
+</ol>
+</section>
+<section id="bug-triaging-process">
+<h3>Bug triaging process<a class="headerlink" href="#bug-triaging-process" title="Permalink to this heading">¶</a></h3>
+<p>The process of bug triaging consists of the following steps:</p>
+<ul class="simple">
+<li><p>Check if a bug was filed for a correct component (project). If not,
+either change the project or mark it as <code class="docutils literal notranslate"><span class="pre">Invalid</span></code>.
+For example, if the bug impacts the project-specific dev-ref, then
+mark it as <code class="docutils literal notranslate"><span class="pre">Invalid</span></code>. If a bug is reported against the nova installation
+guide, ensure openstack-manuals is removed, and the nova project is added.</p></li>
+<li><p>If the reported bug affects the ReST API, tools, openstackdocstheme, or
+the Security Guide, add the relevant project to the affected
+projects and remove <code class="docutils literal notranslate"><span class="pre">openstack-manuals</span></code>.
+For example, if the bug affects the ReST API, file a bug in
+<code class="docutils literal notranslate"><span class="pre">openstack-api-site</span></code> and remove <code class="docutils literal notranslate"><span class="pre">openstack-manuals</span></code>.</p></li>
+<li><p>Tag the bug for the appropriate guide. For example, for the
+<code class="docutils literal notranslate"><span class="pre">image-guide</span></code> remove <code class="docutils literal notranslate"><span class="pre">glance</span></code> from the affected projects if it
+only affects <code class="docutils literal notranslate"><span class="pre">openstack-manuals</span></code> and tag <code class="docutils literal notranslate"><span class="pre">image-guide</span></code>.</p></li>
+<li><p>Set the bug to <code class="docutils literal notranslate"><span class="pre">Invalid</span></code> if it is a request for support or a
+troubleshooting request.</p></li>
+<li><p>Check if a similar bug was filed before. You may also check
+already verified bugs to see if the bug has been reported. If so, mark it as
+a duplicate of the previous bug.</p></li>
+<li><p>Verify if the bug meets the requirements of a good bug report by checking
+that the guidelines or checklist has been followed.</p></li>
+<li><p>Omitted information is still acceptable if the issue is clear. Use your good
+judgment and your experience and consult another core member or the PTL if in
+doubt. If the bug report requires more context, mark the bug as
+<code class="docutils literal notranslate"><span class="pre">Incomplete</span></code>, point the submitter to this document.</p></li>
+</ul>
+</section>
+<section id="doc-bug-triaging-guidelines">
+<span id="guidelines"></span><h3>Doc bug triaging guidelines<a class="headerlink" href="#doc-bug-triaging-guidelines" title="Permalink to this heading">¶</a></h3>
+<p>Bug triaging is the process of reviewing new bugs, verifying whether a bug is
+valid or not, and gathering more information about it. Before being triaged,
+all the new bugs have the status New, and importance Undecided. Here are the
+definitions for available options for Status and Importance columns of any bug.</p>
+<p><strong>Status:</strong></p>
+<ul class="simple">
+<li><p><strong>New</strong> - Recently logged by a non-triaging person.</p></li>
+<li><p><strong>Incomplete</strong> - Needs additional information before it can be triaged.</p></li>
+<li><p><strong>Opinion</strong> - Does not fit the project but can still be discussed.</p></li>
+<li><p><strong>Invalid</strong> - Not an issue for docs.</p></li>
+<li><p><strong>Won’t Fix</strong> - Documentation fixes won’t fix the issue.</p></li>
+<li><p><strong>Confirmed</strong> - Acknowledged that it is a documentation bug.</p></li>
+<li><p><strong>Triaged</strong> - Comments in the bug indicate its scope and amount of work to
+be done.</p></li>
+<li><p><strong>In Progress</strong> - Someone is working on it.</p></li>
+<li><p><strong>Fix Committed</strong> - A fix is in the repository; Gerrit sets this
+automatically. Do not set this manually.</p></li>
+<li><p><strong>Fix Released</strong> - A fix is published to the site.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since all documentation is released directly on docs.openstack.org, the
+“Fix Committed” status is deprecated. If a patch contains the line
+“Closes-Bug: #12345” (see git commit messages for details), our CI
+infrastructure automatically sets the bug to “Fix Released” once the patch
+is merged.</p>
+</div>
+<p><strong>Importance:</strong></p>
+<ul class="simple">
+<li><p><strong>Critical</strong> - Data will be lost if this bug stays in; or it is so bad that
+we are better off fixing it than dealing with all the incoming questions
+about it. Also items on the website itself that prevent access are Critical
+doc bugs.</p></li>
+<li><p><strong>High</strong> - Definitely need docs about this or a fix to current docs; docs are
+incomplete without this. Work on these first if possible.</p></li>
+<li><p><strong>Medium</strong> - Need docs about this within a six-month release timeframe.</p></li>
+<li><p><strong>Low</strong> - Docs are fine without this but could be enhanced by fixing this
+bug.</p></li>
+<li><p><strong>Wishlist</strong> - Not really a bug but a welcome change. If something is wrong
+with the doc, mark the bug as Low rather than Wishlist.</p></li>
+<li><p><strong>Undecided</strong> - Recently logged by a non-triaging person or requires more
+research before deciding its importance.</p></li>
+</ul>
+</section>
+<section id="tags-for-doc-bugs">
+<h3>Tags for doc bugs<a class="headerlink" href="#tags-for-doc-bugs" title="Permalink to this heading">¶</a></h3>
+<p>Depending on the area a bug affects, it has one or more tags. For example:</p>
+<ul class="simple">
+<li><p><strong>low-hanging-fruit</strong> for documentation bugs that are straightforward to fix.
+If you are a newcomer, this is a way to start.</p></li>
+<li><p><strong>install-guide</strong>, <strong>image-guide</strong>, and other for specific guides.</p></li>
+<li><p><strong>infra</strong>, <strong>theme</strong> for documentation bugs that are in the documentation
+build tool chain.</p></li>
+</ul>
+</section>
+<section id="tracking-bugs-by-tag">
+<h3>Tracking bugs by tag<a class="headerlink" href="#tracking-bugs-by-tag" title="Permalink to this heading">¶</a></h3>
+<p>If you need to regularly track activity relating to particular tags,
+you can set up email subscriptions by visiting
+<a class="reference external" href="https://bugs.launchpad.net/openstack-manuals/+subscriptions">the subscriptions page of the Launchpad project</a>:</p>
+<ol class="arabic simple">
+<li><p>Select <span class="guilabel">Add a subscription</span>.</p></li>
+<li><p>Select the option to receive mail for bugs affecting the project
+that <span class="guilabel">are added or changed in any way</span>.</p></li>
+<li><p>Check the <span class="guilabel">Bugs must match this filter</span> checkbox.</p></li>
+<li><p>Select the <span class="guilabel">Tags</span> subsection.</p></li>
+<li><p>Populate the tag(s) you want to track.</p></li>
+<li><p>Create the subscription.</p></li>
+</ol>
+</section>
+</section>
+<section id="bugs-for-third-party-drivers">
+<h2>Bugs for third-party drivers<a class="headerlink" href="#bugs-for-third-party-drivers" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of the Pike release, this documentation was moved into
+the project-specific repos and this option is no longer
+required.</p>
+</div>
+<p>Bugs to update tables for the configuration references use the tag
+<strong>autogenerate-config-docs</strong>.</p>
+<p>For updates of specific sections or adding of new drivers, follow the
+specification <a class="reference external" href="https://specs.openstack.org/openstack/docs-specs/specs/kilo/move-driver-docs.html">Proprietary driver docs in openstack-manuals</a>
+and assign the bug to the contact person that is mentioned on the
+<a class="reference external" href="https://wiki.openstack.org/wiki/Documentation/VendorDrivers">Vendor driver page</a>. If
+this is a new driver with no documentation yet, assign the bug to the
+committer of the change that triggered the bug report, mark it as
+<strong>Wishlist</strong> and ask the committer to read and follow the
+specification and handle it since the documentation team will not
+document third-party drivers.</p>
+</section>
+</section>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="api-guides.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: OpenStack API documentation"></i></a>
+          
+          
+            <a href="doc-impact.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: DocImpact"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">this page last updated: 2022-12-26 10:06:20</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="https://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the
+                 document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="OpenStack Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/id/">Bahasa Indonesia (Indonesian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/it/">Italiano (Italian)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/tr_TR/">Türkçe (Türkiye)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="https://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="index.html" class="docs-sidebar-section-title"><h4>Documentation Contributor Guide </h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="team-structure.html">Documentation team structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="team-vision.html">2017/2018 documentation team vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="non-native-english-speakers.html">Non-native English speakers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blueprints-and-specs.html">Blueprints and specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-guides.html">Project guide setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-index.html">Landing pages on docs.openstack.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-tag.html">Governance tag documentation guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-guides.html">OpenStack API documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation bugs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc-impact.html">DocImpact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#filing-a-bug">Filing a bug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-on-documentation-bugs">Working on documentation bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-on-documentation-stories">Working on documentation stories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#triaging-bugs-for-openstack-manuals">Triaging bugs for openstack-manuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bugs-for-third-party-drivers">Bugs for third-party drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="writing-docs.html">Writing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing-style.html">Writing style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guidelines.html">OpenStack user experience and user interface guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst-conv.html">RST conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-conv.html">JSON conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagram-guidelines.html">Diagram guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs-review.html">Reviewing documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs-builds.html">Building documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redirects.html">Redirecting documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc-tools.html">Using documentation tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Publishing a documentation release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/glossary.html">Glossary</a></li>
+</ul>
+
+    </div>
+
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="local-table-of-contents">
+      <h4 class="docs-sidebar-section-title">Page Contents</h4>
+      <ul>
+<li><a class="reference internal" href="#">Documentation bugs</a><ul>
+<li><a class="reference internal" href="#filing-a-bug">Filing a bug</a></li>
+<li><a class="reference internal" href="#working-on-documentation-bugs">Working on documentation bugs</a></li>
+<li><a class="reference internal" href="#working-on-documentation-stories">Working on documentation stories</a></li>
+<li><a class="reference internal" href="#triaging-bugs-for-openstack-manuals">Triaging bugs for openstack-manuals</a><ul>
+<li><a class="reference internal" href="#bug-triage-liaison">Bug triage liaison</a></li>
+<li><a class="reference internal" href="#bug-triaging-process">Bug triaging process</a></li>
+<li><a class="reference internal" href="#doc-bug-triaging-guidelines">Doc bug triaging guidelines</a></li>
+<li><a class="reference internal" href="#tags-for-doc-bugs">Tags for doc bugs</a></li>
+<li><a class="reference internal" href="#tracking-bugs-by-tag">Tracking bugs by tag</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bugs-for-third-party-drivers">Bugs for third-party drivers</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="https://openstack.org/projects/">Projects</a></li>
+          <li><a href="https://www.openstack.org/software/security/">OpenStack Security</a></li>
+          <li><a href="https://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="https://openstack.org/blog/">Blog</a></li>g
+          <li><a href="https://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="https://openstack.org/community/">User Groups</a></li>
+          <li><a href="https://openstack.org/community/events/">Events</a></li>
+          <li><a href="https://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="https://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="https://docs.openstack.org/contributors">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="https://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="https://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="https://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="https://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="https://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="https://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="https://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="_static/js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="_static/js/bootstrap.min.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="_static/js/docs.js"></script>
+
+<!-- standard sphinx include libraries, which allow search highlighting -->
+<script type="text/javascript" src="_static/underscore.js"></script>
+<script type="text/javascript" src="_static/doctools.js"></script>
+<script type="text/javascript" src="_static/searchtools.js"></script>
+<script type="text/javascript" src="_static/language_data.js"></script>
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      LINK_SUFFIX: '.html',
+      SOURCELINK_SUFFIX: '.txt',
+      HAS_SOURCE:  true
+    };
+</script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+  /* Build a description of this page including SHA, source location on git
+   * repo, build time and the project's launchpad bug tag. Set the HREF of the
+   * bug buttons
+   */
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+    /* "giturl" is the URL of the source file on Git and is auto-generated by
+     * openstackdocstheme.
+     *
+     * "pagename" is a standard sphinx parameter containing the name of
+     * the source file, without extension.
+     */
+
+    var sourceFile = "doc-bugs" + ".rst";
+    gitURL = "Source: https://opendev.org/openstack/openstack-manuals/src/doc/doc-contrib-guide/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: bf388c77ad0e3655b1c07b7f3d325a61dee86c6f";
+    var repositoryName = "openstack/openstack-manuals";
+    var bugProject = "openstack-manuals";
+    var bugTitle = "Documentation bugs in Documentation Contributor Guide";
+    var fieldTags = "doc-contrib-guide";
+    var useStoryboard = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release:  on 2022-12-26 10:06:20";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, useStoryboard);
+</script>
+
+
+  </body>
+</html>
